@@ -1,0 +1,11 @@
+<div class="col-md-4 mb-4">
+    <div class="card">
+        <img src="{{ book.cover_image_url }}" alt="{{ book.title }}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text">{{ book.synopsis }}</p>
+            <a href="{% url 'book_detail' book.id %}" class="btn btn-info btn-block"
+                style="width: 50%; margin: 0 auto;">Read More</a>
+        </div>
+    </div>
+</div>
