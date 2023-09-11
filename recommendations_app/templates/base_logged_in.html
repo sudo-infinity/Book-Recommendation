@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>{% block title %}Book Recommendation{% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">Book Recommendations</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">My Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'recommendations' %}">Recommended Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link"> {{ user.username }}!</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="input-group bg-info">
+        <form method="get" action="{% url 'book_search' %}" class="my-4">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search by title">
+                <input type="text" name="genre" class="form-control" placeholder="Search by genre">
+                <input type="text" name="author" class="form-control" placeholder="Search by author">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-dark">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" style="padding: 0px; margin: 0px; max-width: 100%;">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

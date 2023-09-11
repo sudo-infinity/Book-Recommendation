@@ -1,0 +1,16 @@
+{% extends "base_logged_in.html" %}
+{% block content %}
+<h2>Search and Filter Books</h2>
+
+{% if books %}
+<div class="container mt-4">
+    <div class="row">
+        {% for book in books %}
+        {% include 'fragments/book_card.html' %}
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<p>No books found for your search criteria.</p>
+{% endif %}
+{% endblock %}
