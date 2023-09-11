@@ -1,0 +1,38 @@
+{% extends "base_logged_in.html" %}
+{% load widget_tweaks %}
+<!-- Load the widget_tweaks library -->
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-info text-white text-center">
+                    <h2>User Profile</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.username.label_tag }}
+                        {{ form.username|add_class:"form-control mb-3" }}
+
+                        {{ form.email.label_tag }}
+                        {{ form.email|add_class:"form-control mb-3" }}
+
+                        {{ form.favorite_genres.label_tag }}
+                        {{ form.favorite_genres|add_class:"form-control mb-3" }}
+
+                        {{ form.favorite_authors.label_tag }}
+                        {{ form.favorite_authors|add_class:"form-control mb-3" }}
+
+                        {{ form.favorite_books.label_tag }}
+                        {{ form.favorite_books|add_class:"form-control mb-3" }}
+
+                        <button type="submit" class="btn btn-info btn-block rounded-pill">Save Preferences</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

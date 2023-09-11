@@ -1,0 +1,21 @@
+{% extends "base_logged_in.html" %}
+
+{% block content %}
+
+{% if no_preferences %}
+<p>To see book recommendations, please add some preferences:</p>
+<p><a href="{% url 'profile' %}" class="btn btn-primary">Set Preferences</a></p>
+{% else %}
+<!-- Display recommended books -->
+<h3>Recommended Books</h3>
+<div class="container mt-4">
+    <div class="row">
+        {% for book in recommended_books %}
+        {% include 'fragments/book_card.html' %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
